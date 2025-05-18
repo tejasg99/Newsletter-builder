@@ -3,6 +3,8 @@ import { NewsletterProvider, useNewsletter } from './context/NewsletterContext';
 import { availableBlocks } from './data/availableBlocks';
 import Toolbar from './components/Toolbar';
 import Canvas from './components/Canvas';
+import PropertiesPanel from './components/PropertiesPanel';
+import ExportButton from './components/ExportButton';
 
 function AppContent() {
   const { state, dispatch } = useNewsletter();
@@ -81,8 +83,9 @@ function AppContent() {
     >
       <div className="min-h-screen bg-gray-100">
         <header className="bg-white shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <h1 className="text-2xl font-bold text-gray-900">Newsletter Builder</h1>
+            <ExportButton />
           </div>
         </header>
 
@@ -102,7 +105,7 @@ function AppContent() {
             {/* Properties Panel */}
             <div className="col-span-3 bg-white rounded-lg shadow p-4">
               <h2 className="text-lg font-semibold mb-4">Properties</h2>
-              {/* Properties panel content will go here */}
+              <PropertiesPanel />
             </div>
           </div>
         </main>
