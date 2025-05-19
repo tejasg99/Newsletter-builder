@@ -2,7 +2,7 @@ import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import DroppedBlockWrapper from '../DroppedBlockWrapper';
 
-function Column({ columnBlocks, columnIndex }) {
+function Column({ columnBlocks, columnIndex, width }) {
   const { setNodeRef } = useDroppable({
     id: `column-${columnIndex}`
   });
@@ -11,6 +11,7 @@ function Column({ columnBlocks, columnIndex }) {
     <div
       ref={setNodeRef}
       className="min-h-[100px] p-2 bg-gray-50 rounded"
+      style={{ width }}
     >
       <SortableContext
         items={columnBlocks.map(block => block.id)}
@@ -30,14 +31,18 @@ function Column({ columnBlocks, columnIndex }) {
 }
 
 export default function ColumnsBlock({ content, styles }) {
+  const columnWidths = (styles.columnWidth || '50%').split(' ');
+  const gap = styles.gap || '20px';
+
   return (
     <div style={styles}>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="flex" style={{ gap }}>
         {content.columns.map((columnBlocks, columnIndex) => (
           <Column
             key={columnIndex}
             columnBlocks={columnBlocks}
             columnIndex={columnIndex}
+            width={columnWidths[columnIndex] || '50%'}
           />
         ))}
       </div>

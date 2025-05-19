@@ -3,12 +3,14 @@ import TextProperties from './Properties/TextProperties';
 import ImageProperties from './Properties/ImageProperties';
 import ButtonProperties from './Properties/ButtonProperties';
 import SpacerProperties from './Properties/SpacerProperties';
+import ColumnsProperties from './Properties/ColumnsProperties';
 
 const propertyEditors = {
   text: TextProperties,
   image: ImageProperties,
   button: ButtonProperties,
-  spacer: SpacerProperties
+  spacer: SpacerProperties,
+  columns: ColumnsProperties
 };
 
 export default function PropertiesPanel() {
